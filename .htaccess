@@ -1,0 +1,48 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Redirect to HTTPS (uncomment in production)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Allow direct access to public folder (CSS, JS, images)
+RewriteCond %{REQUEST_URI} ^/public/
+RewriteRule ^ - [L]
+
+# If the request is for a real file or directory, serve it
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Route everything through index.php
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+# Prevent directory browsing
+Options -Indexes
+
+# Protect sensitive files and folders
+<FilesMatch "^(database\.sql|composer\.json|composer\.lock|\.env)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Protect PHP files in config, src, and views folders (except index.php)
+RedirectMatch 403 ^/research-tool/(config|src|views|cron)/.*$
+
+# Set default charset
+AddDefaultCharset UTF-8
+
+# Enable compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Browser caching
+# <IfModule mod_expires.c>
+#     ExpiresActive On
+#     ExpiresByType image/jpg "access plus 1 year"
+#     ExpiresByType image/jpeg "access plus 1 year"
+#     ExpiresByType image/gif "access plus 1 year"
+#     ExpiresByType image/png "access plus 1 year"
+#     ExpiresByType text/css "access plus 1 month"
+#     ExpiresByType application/javascript "access plus 1 month"
+# </IfModule>
