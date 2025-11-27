@@ -18,16 +18,16 @@ define('BASE_PATH', $script);
 
 // Database Configuration
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'research_tool');
+define('DB_NAME', '');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
 // API Keys (Add your keys here)
-define('REDDIT_CLIENT_ID', 'R_KSMJ7dP5-cUh_ft9jqTQ'); // Get from: https://www.reddit.com/prefs/apps
-define('REDDIT_CLIENT_SECRET', 'zodI09OyoGKxRZ9BQ8r-2AS1g2blKw');
+define('REDDIT_CLIENT_ID', ''); // Get from: https://www.reddit.com/prefs/apps
+define('REDDIT_CLIENT_SECRET', '');
 define('REDDIT_USER_AGENT', SITE_NAME . '/1.0');
 
-define('PRODUCTHUNT_API_TOKEN', 'Ek6H3eJZwIncXDIVVkT8obdv_ilTWQ1GGotFw1qw5ss'); // Get from: https://www.producthunt.com/v2/oauth/applications
+define('PRODUCTHUNT_API_TOKEN', ''); // Get from: https://www.producthunt.com/v2/oauth/applications
 
 define('OPENAI_API_KEY', ''); // Get from: https://platform.openai.com/api-keys
 
